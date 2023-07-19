@@ -3,7 +3,7 @@ title: RNN-LSTM Trajectory Predictore
 description: Trajectory prediction of surrounding traffic agents using RNN-LSTM algorithm.
 category: Neural Network
 from: 2023-11-01 00:00:00 +0000
-image: '/images/owns/raceweather/icon.jpg'
+image: 'https://github.com/sanketsalunkhe12/RNN-LSTM/blob/main/readme_data/ezgif.com-gif-maker%20(1).gif'
 image_caption: '5 sec future trajectory prediction'
 github_link: 'https://github.com/sanketsalunkhe12/RNN-LSTM'
 ---
