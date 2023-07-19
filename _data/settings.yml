@@ -12,20 +12,25 @@ menu__settings:
   menu__items:
     - title: 'Home'
       url: '/'
+    
     - title: 'About me'
       url: '/about/'
+    
     - title: 'My career'
       url: '/career/'
-    - title: 'Tech Stack'
-      url: '/techstack/'
-    - title: 'References'
-      submenu:
-      - url: '/work/'
-        title: 'Works'
-      - url: '/own/'
-        title: 'Own projects'
-    - title: 'Articles'
-      url: '/blog/'
+    
+    # - title: 'Tech Stack'
+    #   url: '/techstack/'
+    
+    - title: 'Own projects'
+      url: '/own/'
+      
+    - title: 'Works'
+      url: '/work/'
+        
+    # - title: 'Articles'
+    #   url: '/blog/'
+    
     - title: 'Contact'
       url: '/contact/'
 
@@ -59,7 +64,7 @@ hero:
 #-------------------------------
 # Logos Settings
 logos:
-  enable: true
+  enable: false
   logos__title: Companies I've had the pleasure to work with
 
 logo__items:
@@ -85,24 +90,25 @@ logo__items:
 
 
 #-------------------------------
-# Work Settings
-work:
-  enable: true
-  work__title: References
-  work__description: Some of the interesting projects and other initiatives I have worked on over the years.
-
-#-------------------------------
 # Own projects Settings
 own:
   enable: true
   own__title: Own projects
   own__description: Here are the projects I've done on my own.
+  
+
+#-------------------------------
+# Work Settings
+work:
+  enable: false
+  work__title: References
+  work__description: Some of the interesting projects and other initiatives I have worked on over the years.
 
 
 #-------------------------------
 # Testimonials Section
 testimonials:
-  enable: true
+  enable: false
 
 testimonial__title: Recommendations
 testimonial__description: 
@@ -131,7 +137,7 @@ testimonial__items:
 #-------------------------------
 # Blog Section
 blog:
-  enable: true
+  enable: false
 
 blog__settings:
   blog__title: Articles
@@ -159,4 +165,4 @@ disqus:
 
 #-------------------------------
 # Google Analytics
-google-analytics: G-0LJ5CLHSWF
+# google-analytics: G-0LJ5CLHSWF
