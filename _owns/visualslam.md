@@ -4,7 +4,6 @@ description: Stereo-IMU-based VI-SLAM algorithm based on reference from ORB, Ope
 category: SLAM
 from: 2023-11-01 00:00:00 +0000
 image: '/images/owns/raceweather/icon.jpg'
-image_caption: 'App icon'
 github_link: 'https://github.com/sanketsalunkhe12/vslam'
 ---
 
