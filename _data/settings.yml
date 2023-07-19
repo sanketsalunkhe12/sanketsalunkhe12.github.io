@@ -100,7 +100,7 @@ own:
 #-------------------------------
 # Work Settings
 work:
-  enable: false
+  enable: true
   work__title: References
   work__description: Some of the interesting projects and other initiatives I have worked on over the years.
 
