@@ -1,5 +1,5 @@
 ---
-title: kalman Filter Localization
+title: Kalman Filter Localization
 description: UAV Localization using EKF, UKF, and Optical Flow
 category: Localization
 from: 2023-11-01 00:00:00 +0000
