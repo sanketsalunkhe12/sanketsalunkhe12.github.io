@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Sanket Salunkhe</title>
+        <description>My personal portfolio website.</description>
+        <link>http://localhost:4000/</link>
+        <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Wed, 19 Jul 2023 17:40:37 -0400</pubDate>
+        <lastBuildDate>Wed, 19 Jul 2023 17:40:37 -0400</lastBuildDate>
+        <generator>Jekyll v4.3.1</generator>
+        
+            <item>
+                <title>Example usage of the clean architecture</title>
+                <description>&lt;p&gt;The example app (described &lt;a href=&quot;/own/raceweather&quot;&gt;in the own projects section on this website&lt;/a&gt;) is meant to show a weather forecast app for motorsport events. The idea and the purpose are pretty simple. I’ve chosen this domain, because of the possible variety of options from which you may need to fetch data (that can also be in different forms).&lt;/p&gt;
+
+&lt;p&gt;You can find the code in a &lt;a href=&quot;https://github.com/lukas-ruzicka/race-weather-ios&quot;&gt;public repository on my GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In this case for every motorsport serie you may need different implementations of the logic of the data gathering. That’s why I think, it’s a great example of a case in which the clean architecture may really make its advantages shine ✨.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/owns/raceweather/screenshot-coming.jpg&quot; loading=&quot;lazy&quot; alt=&quot;Coming screen&quot; /&gt;
+    &lt;img src=&quot;/images/owns/raceweather/screenshot-event-detail.jpg&quot; loading=&quot;lazy&quot; alt=&quot;Event detail screen&quot; /&gt;
+    &lt;img src=&quot;/images/owns/raceweather/screenshot-serie-detail.jpg&quot; loading=&quot;lazy&quot; alt=&quot;Serie detail screen&quot; /&gt;
+  &lt;/div&gt;
+  &lt;em&gt;Screenshots from the &lt;a href=&quot;https://apps.apple.com/app/race-weather-app/id6444075511&quot;&gt;App Store&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The app was built using &lt;a href=&quot;https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html&quot;&gt;the clean architecture&lt;/a&gt; (and simplified MVVM for the presentation layer) to demonstrate the benefits and advantages it may bring.&lt;/p&gt;
+
+&lt;p&gt;As you can see in the diagram below, it has a separate &lt;em&gt;layer for data processing&lt;/em&gt; (data layer), &lt;em&gt;a business logic layer&lt;/em&gt; (domain layer) that defines the main value of the app, and &lt;em&gt;a presentation layer&lt;/em&gt; that translates all the data to the user interface and encapsulates the logic of interactions with the app.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/posts/clean-architecture-example/rw-architecture-diagram.jpg&quot; loading=&quot;lazy&quot; alt=&quot;Architecture diagram&quot; /&gt;
+  &lt;/div&gt;
+  &lt;em&gt;Diagram of the app's architecture&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;benefits-of-the-architecture&quot;&gt;Benefits of the architecture&lt;/h2&gt;
+
+&lt;p&gt;Apart from the obvious advantages of using such architecture, like:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;isolated layers and components that can be developed and tested separately&lt;/li&gt;
+  &lt;li&gt;the business logic defining the app structure and interfaces&lt;/li&gt;
+  &lt;li&gt;each component of the architecture is easily interchangeable&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;.., in this context, you can make &lt;strong&gt;the possibility to swap implementations worth it&lt;/strong&gt; - in particular for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EventsRepository&lt;/code&gt;. You can already see two example implementations of the repository for the two supported series. They have two different services from which they consume the content and different logic for observing the content - yet, the remaining of the application seamlessly interacts with them both in the same way.&lt;/p&gt;
+
+&lt;p&gt;It means that adding support of a new serie is &lt;strong&gt;completely isolated&lt;/strong&gt; and can be done &lt;strong&gt;without interfering any other parts of the app&lt;/strong&gt;. Adding a new serie would consist of these few steps:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;adding new implementation of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EventsRepository&lt;/code&gt; (&lt;em&gt;data layer&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;adding a new case in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Serie&lt;/code&gt; enum  (&lt;em&gt;domain layer&lt;/em&gt;)&lt;/li&gt;
+  &lt;li&gt;adding translation of the serie name and icon for the new &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Serie&lt;/code&gt; case (&lt;em&gt;presentation layer&lt;/em&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And that’s it, the new serie will seamlessly be integrated into the app without any other dependencies or integrations required.&lt;/p&gt;
+
+&lt;h3 id=&quot;dependency-injection&quot;&gt;Dependency injection&lt;/h3&gt;
+
+&lt;p&gt;To distribute all the components easily within the architecture, it was necessary to introduce dependency injection. It also helps to maintain the lifecycle of the components - e.g. data layer components need to be shared through the whole codebase, but presentation modules can have multiple living duplicates at one time.&lt;/p&gt;
+
+&lt;h3 id=&quot;unit-tests&quot;&gt;Unit tests&lt;/h3&gt;
+
+&lt;p&gt;As mentioned above, the architecture enables us to test each layer separately. I’ve created a few examples of these unit tests - especially in the domain layer (more or less testing only happy scenarios - can and should be tested much more, but it’s sufficient for the demonstration here).&lt;/p&gt;
+
+&lt;h3 id=&quot;simplified-areas&quot;&gt;Simplified areas&lt;/h3&gt;
+
+&lt;p&gt;I’ve simplified a few areas of the architecture as they weren’t the core of the demonstration. They wouldn’t bring that much of an advantage considering the effort to support them. These areas are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;using domain models in Views (the presentation layer should have its models)&lt;/li&gt;
+  &lt;li&gt;data layer is merged with the repository layer (may be beneficial to separate them if the project grows)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;project-structure&quot;&gt;Project structure&lt;/h2&gt;
+
+&lt;p&gt;The project structure has been built using Swift Packages - each layer of the architecture is detached in a package and project-wide utilities are separated in another package. That means the project itself contains only 4 source files that shouldn’t be changed frequently (i.e. no more conflicts in the project file 🙌🏼).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The packages currently divide the project only horizontally (by layers), but it would also make sense to separate it vertically (e.g. each networking service could have its package or target within the package).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;routing&quot;&gt;Routing&lt;/h2&gt;
+
+&lt;p&gt;The navigation is handled using the new &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NavigationStack&lt;/code&gt; component of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SwiftUI&lt;/code&gt;. However, in order to make it compatible with the dependency injection (to avoid resolving all of the “stacked” screens and their dependencies over and over again), I’ve had to create a wrapper that stores the already presented screens in the stack. For more info, see the &lt;a href=&quot;https://github.com/lukas-ruzicka/race-weather-ios/blob/main/RaceWeather/Router.swift&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RaceWeather/Router.swift&lt;/code&gt; file&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;tech-stack&quot;&gt;Tech stack&lt;/h2&gt;
+
+&lt;p&gt;I wanted to avoid using external dependencies, so the project mainly uses the Apple SDK, especially these frameworks:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Swift concurrency (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;async/await&lt;/code&gt;) for asynchronous code&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;URLSession&lt;/code&gt; for networking&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WeatherKit&lt;/code&gt; for gathering the weather data&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It was inevitable to use some external dependencies (wasn’t worth the effort to use a custom solution), so I ended up using a few:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/hmlongco/Resolver&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Resolver&lt;/code&gt;&lt;/a&gt; for dependency injection&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/SwiftGen/SwiftGen&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SwiftGen&lt;/code&gt;&lt;/a&gt; for strongly typed references of assets and translations&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/firebase/firebase-ios-sdk&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Firebase&lt;/code&gt;&lt;/a&gt; for monitoring of crashes and app insights&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;There are obvious benefits of the clean architecture, however it’s not suitable for all cases and shouldn’t be forced into every project you’ll be working on. I hope that my example has helped to show where the benefits lie, and may make it easier for you to make decision about using the architecture in your context and environment.&lt;/p&gt;
+</description>
+                <pubDate>Thu, 03 Nov 2022 20:00:00 -0400</pubDate>
+                <link>http://localhost:4000/blog/clean-architecture-example</link>
+                <guid isPermaLink="true">http://localhost:4000/blog/clean-architecture-example</guid>
+                
+                <category>clean architecture</category>
+                
+                <category>study</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>Augmented Reality and its easier usage with iOS 13 and “Reality” tools? Not quite so...</title>
+                <description>&lt;p&gt;ARKit has been extended to include features like &lt;a href=&quot;https://youtu.be/SgAnnwl2VB8&quot;&gt;People occlusion&lt;/a&gt; (“overlapping” of virtual objects when they are behind a human), &lt;a href=&quot;https://youtu.be/SgAnnwl2VB8&quot;&gt;Body tracking&lt;/a&gt; (creating a human skeleton and recording the skeleton’s movements) or Collaborative sessions (simple AR scene sharing between multiple devices). And again, the whole AR development was made even more accessible thanks to a high-level framework &lt;strong&gt;RealityKit&lt;/strong&gt; and also an &lt;em&gt;all-powerful&lt;/em&gt; AR tool &lt;strong&gt;Reality Composer&lt;/strong&gt;. These tools further simplified an already very simple implementation (regarding the complexity of the whole AR technology solution).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;RealityKit and Reality Composer&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;RealityKit is the first framework for realistic image rendering from Apple, designed specifically for usage in augmented reality. It handles objects rendering and texturing in relation to the space into which they are placed (physical based rendering). It uses a very efficient &lt;em&gt;Metal&lt;/em&gt; framework for that. Thanks to that the rendering is even less demanding on device performance and capacity. Object types have also been simplified compared to the previously used &lt;em&gt;SceneKit&lt;/em&gt;, so that everything meets the conditions of augmented reality.&lt;/p&gt;
+
+&lt;p&gt;But the thing with which Apple made the development accessible the most is the &lt;strong&gt;Reality Composer&lt;/strong&gt;. This app is available for both macOS and iOS (or iPadOS). It is easy to assemble an AR scene with it, including animations and interactions with objects, and everything can be prepared not only in virtual 3D space, but directly in the real environment. A scene anchor can be a horizontal / vertical surface, a face, a picture, or even a real object.&lt;/p&gt;
+
+&lt;p&gt;An exported .reality file can be run and viewed in augmented reality without the need for another application directly on the iPhone / iPad. Likewise, this file, or the entire project, can be inserted directly into Xcode, where you can just load it in the code (use the code that is automatically generated after the project is added) and insert it into the AR scene. Because the RC project can be located directly in the repository, there is a great opportunity to reflect the changes in the RC project directly in the application code. For example, if you want to move one of the objects, just open the RC project, move the object, and simply build the application without further steps.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Any iPhone or iPad with iOS 13 (or iPadOS 13) and an A9 chip or higher (i.e. iPhone 6S / iPad 2017 and later) will do the trick.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;it-all-sounds-too-beautiful-to-be-really-that-simple&quot;&gt;It all sounds too beautiful to be really that simple.&lt;/h3&gt;
+
+&lt;p&gt;Given that augmented reality is still very fresh technology, we can expect, that not everything will be perfectly tuned. Even though Apple is a guarantee of quality in this field, it seems that with this year’s news it got a little too much ahead of itself.&lt;/p&gt;
+
+&lt;p&gt;You can see this already on the frequent operating system updates, which still fix a considerable number of errors and flaws. These fixes addressed, among others, the mentioned augmented reality tools, where some solutions had several fundamental limitations and malfunctions. I would like to show you some of these.&lt;/p&gt;
+
+&lt;h2 id=&quot;synetech--augmented-reality&quot;&gt;SYNETECH &amp;amp; augmented reality&lt;/h2&gt;
+
+&lt;p&gt;We tried new tools in the AR zone at the &lt;a href=&quot;https://appparade.cz/&quot;&gt;AppParade&lt;/a&gt; competition, which we organise. We regularly try to bring people closer to and let them touch the latest trends and technologies, where AR undoubtedly has its place.&lt;/p&gt;
+
+&lt;p&gt;Augmented Reality is a technology that we are actively engaged in and develop its capabilities within our own product called Synevision. This time, as part of the &lt;a href=&quot;https://appparade.cz/historie&quot;&gt;&lt;strong&gt;AppParade 33&lt;/strong&gt;&lt;/a&gt; held in November 2019, we decided to create a &lt;strong&gt;concept called&lt;/strong&gt; &lt;strong&gt;Museum of the Future&lt;/strong&gt;. It was about exhibiting only exhibits without any other info panels or signs and the visitor learned about them just in augmented reality. The central motive was a question: what iPhone gave to and took from the world?&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/posts/ios13-reality-tools/appparade_33_arzone.jpg&quot; loading=&quot;lazy&quot; alt=&quot;App Parade 33 AR zone&quot; /&gt;
+  &lt;/div&gt;
+  &lt;em&gt;Photo from the &lt;a href=&quot;https://appparade.cz&quot; target=&quot;_blank&quot;&gt;App Parade 33&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;p&gt;With that what Apple promised at WWDC in June, &lt;strong&gt;it was supposed to be a really simple project&lt;/strong&gt;. Apparently it was only about scanning the exhibit reference models (using the &lt;a href=&quot;https://developer.apple.com/documentation/arkit/scanning_and_detecting_3d_objects&quot;&gt;demo application&lt;/a&gt;, provided directly by Apple engineers), create text panels and just add everything to a scene in &lt;em&gt;Reality Composer&lt;/em&gt;. Then insert this project into an app project, load and add everything directly to ARView when starting the AR scene. Everything else should be handled by &lt;em&gt;RealityKit&lt;/em&gt;. This is one of the reasons why we expected development to take a minimal amount of time. However, we have encountered so many limitations that the development period has extended several times. Fortunately, we started well in advance 🙏🏼&lt;/p&gt;
+
+&lt;h2 id=&quot;the-most-essential-problems-we-encountered-while-implementing-the-solution&quot;&gt;The most essential problems we encountered while implementing the solution:&lt;/h2&gt;
+
+&lt;p&gt;In the end we managed to get the AR zone into a usable form and it met with success. I will describe all the problems that arose along with solutions. Perhaps this will save someone from grey or torn out hair 👴🏼&lt;/p&gt;
+
+&lt;h3 id=&quot;difficult-reference-model-detection&quot;&gt;Difficult reference model detection&lt;/h3&gt;
+
+&lt;p&gt;As mentioned above, a scene can be created in the Reality Composer &lt;em&gt;(RC further on)&lt;/em&gt; project. It relies on an anchor that is a real physical object. All that was needed was to add the reference model to the project, place information panels around it, put all this into Xcode and then add it to a scene at the start of the AR session. At the end, everything should be done with the following 3 lines of code:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;entity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;try!&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Entity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;loadScene&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;arView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scene&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;anchors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;entity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;arView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Although the reference model confidently figurated in the RC project (it was detected correctly when previewing within an Reality Composer iOS app), no detection was successful after adding it to our application. After hours of trying everything possible and reading different forums, I found out that the output of Reality Composer is not ready to be detected as a reference model. All that I was left to do was to take care of the detection myself.&lt;/p&gt;
+
+&lt;p&gt;The detection can be started as follows:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Loading reference objects from the assets&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;referenceObjects&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ARReferenceObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;referenceObjects&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;inGroupNamed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;AppParade33Exhibition&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+								&lt;span class=&quot;nv&quot;&gt;bundle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;detectionObjects&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;referenceObjects&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// It's required to assign delegate to the session for &quot;listening&quot; of the scene development&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;arView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delegate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;arView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;After successful detection (this can be captured through the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARSession&lt;/code&gt; delegate method) all that’s needed to do is to to insert the RC output on the detected &lt;em&gt;Anchor&lt;/em&gt;. Since it is no longer necessary to hold a reference anchor of a real object in the RC project, this anchor can be changed to a horizontal surface. The addition of the RC project’s output to a scene looks like this (in a simplified form):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ARSession&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;didAdd&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;anchors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;ARAnchor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// `ARObjectAnchor` is anchor of the defined reference object&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;guard&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;objectAnchor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;anchors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ARObjectAnchor&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as?&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ARObjectAnchor&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;entity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;try!&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Entity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;loadScene&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// Position of the added entity is defined by the following assinging of the `AnchoringComponent` (with identifier of the found anchor)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;entity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;anchoring&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;AnchoringComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;anchor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;identifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;objectAnchor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;identifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;arView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scene&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;addAnchor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;entity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;sometimes-the-rc-project-simply-broke&quot;&gt;Sometimes the RC project simply broke…&lt;/h3&gt;
+
+&lt;p&gt;I haven’t discovered the cause to this day, but many times the RC project just decided that it wouldn’t be possible to retrieve it from the code. Subsequently, I was always forced to create a new project in which I took exactly the same steps and miraculously it was possible to reload the scene. This error occurred quite randomly.&lt;/p&gt;
+
+&lt;p&gt;“Fortunately”, this problem did not have to bother us, because the RC project and its loading directly in the code could not be used in the end. One of the reasons was backward compatibility.&lt;/p&gt;
+
+&lt;h3 id=&quot;support-for-older-ios-versions&quot;&gt;Support for older iOS versions&lt;/h3&gt;
+
+&lt;p&gt;Of course, we knew that everything we create using Reality tools would only be supported from iOS 13 on, and we expected that the &lt;em&gt;AR zone&lt;/em&gt; tab will be visible to the most of Apple phone users and not to everybody. What we didn’t expect, was that we would have to integrate everything that would normally be handled by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if #available (iOS 13.0, *)&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@available (iOS 13.0, *)&lt;/code&gt; annotations.&lt;/p&gt;
+
+&lt;p&gt;From the beginning, we have developed all the functionality in a separate library for the possibility of reuse. To get it into a working form, we didn’t bother ourselves with setting the minimal version lower than 13. Everything just fell apart in the moment when we tried to integrate the library into AppParade app.&lt;/p&gt;
+
+&lt;p&gt;The first problem occurred during the build-time. The issue wasn’t anything else than the automatically generated code for interaction with the RC project. The fact that the library itself wouldn’t be able to provide resources (such as RC projects) was clear immediately when we realised that the generated files were somehow “hidden somewhere” and did not show up in the project tree. However, Apple developers haven’t thought of one essential thing - that someone might want to use the output of RC projects only as a complementary part of an application and therefore they did not wrap the generated code into blocks specifying the necessary iOS version (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;available (iOS 13.0, *)&lt;/code&gt;) 🤦‍ .&lt;/p&gt;
+
+&lt;p&gt;Given that the generated code also included the structure of notifications that objects sent, for example, after interaction or animation, the generated code was more than necessary. Fortunately, after analysis, we found that the code does nothing but loads a &lt;em&gt;.reality&lt;/em&gt; file that can be exported from the RC project and defines their interactions using the keys defined in the project. As time began to push us, there was nothing else to do but to generate the code in a project with a minimum version of iOS 13.0, copy it and tag classes with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@available (iOS 13.0, *)&lt;/code&gt;. Afterwards, just generate &lt;em&gt;.reality&lt;/em&gt; files, insert them into the project and edit the path to them in the originally generated code.&lt;/p&gt;
+
+&lt;p&gt;The original glorious idea of ​​keeping RC projects in a repository and projecting the live changes directly into the code has, of course, completely fallen apart… The only missing line in the generation template totally broke the originally beautiful idea…&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/posts/ios13-reality-tools/desperate_jim_carrey.gif&quot; loading=&quot;lazy&quot; alt=&quot;Desperate Jim Carrey meme&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After solving a successful compilation, there was another problem. To be fair, this problem is not directly related to Reality tools, but generally to the use of native frameworks with iOS versions higher than the application’s &lt;em&gt;deployment target&lt;/em&gt;. I would just like to mention this for anyone who might get stuck on the same problem.&lt;/p&gt;
+
+&lt;p&gt;If you want to use such framework, it is not enough to just to wrap its functionality in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if #available&lt;/code&gt; blocks or entire classes, within which it is used, with&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@available&lt;/code&gt; tag. Under these conditions, the application with lower iOS version crashes immediately. It is also necessary to define the framework import as &lt;em&gt;weak&lt;/em&gt;. Just add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-weak_framework &quot;_FrameworkName_”&lt;/code&gt; to &lt;strong&gt;Other Linker Flags&lt;/strong&gt; in &lt;strong&gt;Build Settings&lt;/strong&gt;, then iOS will ignore any framework imports that are not available to it.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/posts/ios13-reality-tools/weak_framework.png&quot; loading=&quot;lazy&quot; alt=&quot;Weak framework&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If you are using the library as a &lt;em&gt;cocoapod&lt;/em&gt;, you must also generate this &lt;em&gt;flag&lt;/em&gt; into &lt;em&gt;Pod project&lt;/em&gt;. To do this, add the following block into the &lt;em&gt;Podfile&lt;/em&gt;:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;post_install&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;installer_representation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;installer_representation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pods_project&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;targets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'_The pod name_'&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;build_configurations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;build_settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'OTHER_LDFLAGS'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-weak_framework&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;_The native framework name_&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; 
+			&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;rotating-the-object-to-face-the-camera-feature-that-suits-perfectly-for-our-project-almost&quot;&gt;Rotating the object to face the camera? Feature that suits perfectly for our project! Almost…&lt;/h2&gt;
+
+&lt;p&gt;When we came across the “look at camera” function in Reality Composer that could be assigned to an object, we were very happy about it. It was exactly the feature we expected from virtual information panels (so that the visitor was not dependent on the point of view while looking at the exhibit). Unfortunately, it wasn’t again that simple.&lt;/p&gt;
+
+&lt;p&gt;In &lt;em&gt;Reality Composer,&lt;/em&gt; the objects’ actions can always be defined &lt;strong&gt;only for a predetermined time and cannot be canceled in the course of it&lt;/strong&gt;. In general, for example, canceling an animation based on user interaction would look great in otherwise simple action creation. However, the fact that the &lt;em&gt;look at camera&lt;/em&gt; also has the above-described features completely compromises this action.&lt;/p&gt;
+
+&lt;p&gt;If I just want the object to rotate towards the camera for the entire duration of the scene, I have no choice but to set a fixed rotation time (up to 5 minutes) and then send a notification that alerts me to start the action again. However, any other animation of the object is completely buried by this. Previously, we designed double-sided information panels to have the right virtual “feeling” and to make them move in space themselves (by tapping them which caused them to turn around). But if the rotation towards camera was on, there was no animation, of course, because &lt;strong&gt;rotation towards the camera overrode any movement&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The only way to ensure the functionality of both actions at the moment was to reduce the length of rotation towards the camera and putting a lot of work into notification handling. It was then enough to check whether the user tapped on the panel during the last rotation when deciding if the rotation towards the camera should proceed. If so, the rotation animation started and after the rotation the look at camera started again. Everything seemed to work beautifully, but only until the second set of panels was placed into the scene. Even the most powerful devices suddenly had a problem to manage the demanding process (instead of the camera feed we saw just blurry images, which refreshed after nice 3 seconds). We have found that the notification handling is simply incredibly unoptimized (or not intended for frequent interactions).&lt;/p&gt;
+
+&lt;p&gt;Eventually, we figured out a solution on how both animations could work at the same time. All that was needed was to assign an action to the objects, export the &lt;em&gt;.reality&lt;/em&gt; file, and insert it into a new project where an additional action was added. If I mentioned earlier that we lost the opportunity to reflect the changes live into the application project, this has ruined it totally. However, the deadline was inexorably approaching, so we decided not to use the look at camera just to be safe.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/posts/ios13-reality-tools/appparade_33_arzone_summary.gif&quot; loading=&quot;lazy&quot; alt=&quot;App Parade 33 AR zone&quot; /&gt;
+  &lt;/div&gt;
+  &lt;em&gt;Photo from the &lt;a href=&quot;https://appparade.cz&quot; target=&quot;_blank&quot;&gt;App Parade 33&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Apple’s direction in the augmented reality field is definitely right, bringing this world closer to everyone - even to the people with no programming experience. It not only keeps its competitive edge but still increases it.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, this year Apple probably bitten off too much. This is not just about the augmented reality, as evidenced by the fact that in the first weeks since the release of the new iOS, updates and bug fixes were coming out in days. Hopefully, Apple will learn from these slips and provide guaranteed quality services again, even at the cost of minor delay.&lt;/p&gt;
+
+&lt;p&gt;There has been some rumours that Apple should finally introduce augmented reality glasses this year, but as we could see on the presented case, there is still work to be done. We’ll see then what other features will be presented at this year’s WWDC.&lt;/p&gt;
+
+&lt;p&gt;However, regardless of the current flaws, another groundbreaking technology with the potential to change our perception of the world around is already knocking confidently on the door 👀.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Original article can be foung on &lt;a href=&quot;https://synetech.cz/en/blog/dev-augmented-reality-and-its-easier-usage-with-iOS-13&quot;&gt;SYNETECH blog&lt;/a&gt;.&lt;/p&gt;
+</description>
+                <pubDate>Thu, 20 Feb 2020 19:00:00 -0500</pubDate>
+                <link>http://localhost:4000/blog/ios13-reality-tools</link>
+                <guid isPermaLink="true">http://localhost:4000/blog/ios13-reality-tools</guid>
+                
+                <category>augmented reality</category>
+                
+                
+            </item>
+        
+    </channel>
+</rss>
