@@ -17,16 +17,16 @@ menu__settings:
       url: '/about/'
     
     - title: 'My career'
-      url: '/career/'
+      url: '/work/'
     
     # - title: 'Tech Stack'
     #   url: '/techstack/'
     
-    - title: 'Own projects'
+    - title: 'Projects'
       url: '/own/'
       
-    - title: 'Works'
-      url: '/work/'
+    - title: 'Publication'
+      url: '/publication/'
         
     # - title: 'Articles'
     #   url: '/blog/'
@@ -57,8 +57,9 @@ social:
 # Hero Settings
 hero:
   enable: true
-  hero__title: Sanket Salunkhe, the Robotics Engineer 
-  hero__description: "I'm Sanket, a Robotics Engineer 🤖 currently working as a Robotics Research Scientist at NYU ARPL 🇺🇸."
+  hero__title: Sanket Salunkhe, Robotics Engineer 
+  hero__description: "I'm Sanket, a Robotics Engineer 🤖 currently working as a Robotics Research Scientist at NYU ARPL 🇺🇸. A dedicated 
+  and innovative Robotics researcher with a passion for Robot Perception, Planning, SLAM and Multi-Agent systems."
   hero__image: "/images/portraits/studio-portrait-cropped.jpg"
 
 
