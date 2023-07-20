@@ -15,7 +15,7 @@ layout: default
         <!-- <div class="row"> -->
         <div class="work-head__left">
           <div class="work-head__image">
-            <img class="lazy" data-src="{{site.baseurl}}{{page.image}}" alt="{{page.title}}" width="10" height="10">
+            <img class="lazy" data-src="{{site.baseurl}}{{page.image}}" alt="{{page.title}}">
           </div>
           {% if page.image_caption %}
           <div class="page-image-caption">{{ page.image_caption | markdownify | replace: '<p>' | replace: '</p>' }}</div>
