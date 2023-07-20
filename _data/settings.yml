@@ -22,7 +22,7 @@ menu__settings:
     # - title: 'Tech Stack'
     #   url: '/techstack/'
     
-    - title: 'Own projects'
+    - title: 'Projects'
       url: '/own/'
       
     # - title: 'Works'
