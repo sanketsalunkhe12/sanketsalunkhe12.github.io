@@ -2,8 +2,8 @@
 title: Robolab Technologies
 description: National award winning eduTech startup focused on delivering cutting edge knowledge about Robotics, Artificial Intelligence, and IoT
 category: Robotics
-from: 2019-01-06 00:00:00 +0000
-to: 2021-01-06 00:00:00 +0000
+from: 2019-06-01 00:00:00 +0000 #yyyy-mm-dd
+to: 2021-06-01 00:00:00 +0000
 role: Associate Robotics Engineer
 image: '/images/works/robolab/robolab1.png'
 skills: AutoCAD, Fusion360, 3D Printing (FDM & SLA), Python, IoT
