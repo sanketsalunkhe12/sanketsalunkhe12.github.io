@@ -2,8 +2,8 @@
 title: COAST Autonomous
 description: A self-driving technology company providing mobility solutions to move people and goods at appropriate speeds in urban, industrial, and campus environments
 category: Autonomous Vehicle
-from: 2022-01-05 00:00:00 +0000
-to: 2022-01-08 00:00:00 +0000
+from: 2022-05-01 00:00:00 +0000 #yyyy-mm-dd
+to: 2022-08-01 00:00:00 +0000
 role: Robotics Engineer Intern
 image: '/images/works/coast_intern/coast.jpg'
 skills: Deep Learning, C++, ROS, Computer Vision, Ubuntu, Git

@@ -2,8 +2,8 @@
 title: NYU Agile Robotics & Perception Lab
 description: The fundamental and applied research in the area of robotics autonomy aim to create agile autonomous machines.
 category: Robotics Lab
-from: 2022-01-08 00:00:00 +0000
-to: Present
+from: 2022-08-01 00:00:00 +0000
+# to: Present
 role: Robotics Research Scientist
 image: '/images/works/nyu_arpl/arpl1.jpg'
 skills: ROS, ROS2, OpenVINS, VIO, Quadcopter, C++, Photogrammetry, Jetson
