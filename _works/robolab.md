@@ -1,0 +1,13 @@
+---
+title: Robolab Technologies
+description: National award winning eduTech startup focused on delivering cutting edge knowledge about Robotics, Artificial Intelligence, and IoT
+category: Robotics
+from: 2019-01-06 00:00:00 +0000
+to: 2021-01-06 00:00:00 +0000
+role: Associate Robotics Engineer
+image: '/images/works/robolab/robolab1.png'
+---
+
+Developed an RNN-LSTM model for trajectory tracking of surrounding traffic agents with 80% accuracy.
+Improved motion planning and control model of autonomous vehicles in congested environments.
+Deployed DeepLabV3 semantic segmentation model on Cityscape dataset for drivable space identification.

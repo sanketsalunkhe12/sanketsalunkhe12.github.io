@@ -17,7 +17,7 @@
       <div class="col col-8 col-d-12">
         <div class="row">
           {% assign sorted = site.works | sort: 'to', 'last' | reverse %}
-          {% for work in sorted limit:2 %}
+          {% for work in sorted limit:3 %}
           <article class="work col col-12 col-d-12">
             
             <div class="work__content">
@@ -34,8 +34,8 @@
                     {% if work.category %}
                     <!-- <div class="work__category">{{ work.category }}</div> -->
                     {% endif %}
-                    <h4>{{ work.role }} </h4>
-                    <h3 class="work__title"><a href="{{ work.url }}">{{ work.title }}</a></h3>
+                    <h5 style="margin-bottom: 5px;">{{ work.role }} </h5>
+                    <h4 class="work__title"><a href="{{ work.url }}">{{ work.title }}</a></h4>
                     {% if work.description %}
                     <p class="work__description">{{ work.description }}</p>
                     {% endif %}
