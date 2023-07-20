@@ -39,8 +39,10 @@
 
   <script>
     
+    if (localStorage.getItem("theme") === "dark") {
       document.documentElement.setAttribute("dark", "");
       document.documentElement.classList.add('dark-mode');
+    }
     
   </script>
 
@@ -121,8 +123,9 @@
             <div></div>
           </div>
           
-          <div class="toggle-theme theme-dark">
-            <span class="toggle-moon" title="Dark mode enabled" aria-hidden="true"></span>
+          <div class="toggle-theme toggle-theme-js">
+            <span class="toggle-moon" title="Enable dark mode" aria-hidden="true"></span>
+            <span class="toggle-sun" title="Enable light mode" aria-hidden="true"></span>
           </div>
           
         </div>
@@ -152,6 +155,33 @@
           <p class="hero__description"><p>I’m Sanket, a Robotics Engineer 🤖 currently working as a Robotics Research Scientist at NYU ARPL 🇺🇸.</p>
 </p>
 
+          <!-- adding contact info and links -->
+          <div class="social">
+            <ul class="social__list list-reset">
+              
+              <li class="social__item">
+                <a class="social__link" href="https://github.com/sanketsalunkhe12" target="_blank" rel="noopener"
+                  aria-label="Social link"><i class="ion ion-logo-github"></i></a>
+              </li>
+              
+              <li class="social__item">
+                <a class="social__link" href="https://www.linkedin.com/in/sanket-salunkhe17/" target="_blank" rel="noopener"
+                  aria-label="Social link"><i class="ion ion-logo-linkedin"></i></a>
+              </li>
+              
+              <li class="social__item">
+                <a class="social__link" href="sas9908@nyu.edu" target="_blank" rel="noopener"
+                  aria-label="Social link"><i class="ion ion-mail"></i></a>
+              </li>
+              
+              <li class="social__item">
+                <a class="social__link" href="https://www.instagram.com/ruzickalukas96/" target="_blank" rel="noopener"
+                  aria-label="Social link"><i class="ion ion-logo-instagram"></i></a>
+              </li>
+              
+            </ul>
+          </div>
+          
           
         </div>
       </div>
@@ -192,42 +222,60 @@
         <div class="row">
           
           
-          <article class="work col col-6 col-d-12">
+          <article class="work col col-12 col-d-12">
             
             <div class="work__content">
-              <a href="/work/nyuarpl" class="work__image">
-                <img class="lazy" data-src="/images/works/nyu_arpl/arpl1.jpg" alt="NYU Agile Robotics & Perception Lab">
-              </a>
-              <div class="work__info">
+              
+              <div class="row">
+                <div class="col col-3 col-d-12">
+                  <a href="/work/nyuarpl" class="work__image">
+                    <img class="lazy" data-src="/images/works/nyu_arpl/arpl1.jpg" alt="NYU Agile Robotics & Perception Lab">
+                  </a>
+                </div>
                 
-                <!-- <div class="work__category">Robotics Lab</div> -->
-                
-                <h4>Robotics Research Scientist </h4>
-                <h3 class="work__title"><a href="/work/nyuarpl">NYU Agile Robotics & Perception Lab</a></h3>
-                
-                <p class="work__description">FinTech startup backed by prominent angel investors and advisors</p>
-                
+                <div class="col col-9 col-d-12">
+                  <div class="work__info">
+                    
+                    <!-- <div class="work__category">Robotics Lab</div> -->
+                    
+                    <h4>Robotics Research Scientist </h4>
+                    <h3 class="work__title"><a href="/work/nyuarpl">NYU Agile Robotics & Perception Lab</a></h3>
+                    
+                    <p class="work__description">FinTech startup backed by prominent angel investors and advisors</p>
+                    
+                  </div>
+                </div>
               </div>
+
             </div>
 
           </article>
           
-          <article class="work col col-6 col-d-12">
+          <article class="work col col-12 col-d-12">
             
             <div class="work__content">
-              <a href="/work/coastintern" class="work__image">
-                <img class="lazy" data-src="/images/works/coast_intern/coast.jpg" alt="COAST Autonomous">
-              </a>
-              <div class="work__info">
+              
+              <div class="row">
+                <div class="col col-3 col-d-12">
+                  <a href="/work/coastintern" class="work__image">
+                    <img class="lazy" data-src="/images/works/coast_intern/coast.jpg" alt="COAST Autonomous">
+                  </a>
+                </div>
                 
-                <!-- <div class="work__category">Autonomous Vehicle</div> -->
-                
-                <h4>Robotics Engineer Intern </h4>
-                <h3 class="work__title"><a href="/work/coastintern">COAST Autonomous</a></h3>
-                
-                <p class="work__description">A self-driving technology company providing mobility solutions to move people and goods at appropriate speeds in urban, industrial, and campus environments</p>
-                
+                <div class="col col-9 col-d-12">
+                  <div class="work__info">
+                    
+                    <!-- <div class="work__category">Autonomous Vehicle</div> -->
+                    
+                    <h4>Robotics Engineer Intern </h4>
+                    <h3 class="work__title"><a href="/work/coastintern">COAST Autonomous</a></h3>
+                    
+                    <p class="work__description">A self-driving technology company providing mobility solutions to move people and goods at appropriate speeds in urban, industrial, and campus environments</p>
+                    
+                  </div>
+                </div>
               </div>
+
             </div>
 
           </article>
@@ -404,6 +452,16 @@
               <li class="social__item">
                 <a class="social__link" href="https://www.linkedin.com/in/sanket-salunkhe17/" target="_blank" rel="noopener"
                   aria-label="Social link"><i class="ion ion-logo-linkedin"></i></a>
+              </li>
+              
+              <li class="social__item">
+                <a class="social__link" href="sas9908@nyu.edu" target="_blank" rel="noopener"
+                  aria-label="Social link"><i class="ion ion-mail"></i></a>
+              </li>
+              
+              <li class="social__item">
+                <a class="social__link" href="https://www.instagram.com/ruzickalukas96/" target="_blank" rel="noopener"
+                  aria-label="Social link"><i class="ion ion-logo-instagram"></i></a>
               </li>
               
             </ul>

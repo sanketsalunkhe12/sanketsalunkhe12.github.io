@@ -3,7 +3,7 @@
 title: Sanket Salunkhe
 logo: # You can add own logo. For example '/images/logo.png'.
 description: My personal portfolio website.
-color_scheme: dark # You can choose three modes auto, light, and dark. By default, the auto mode is set, which means the user can choose the light or dark mode themself.
+color_scheme: auto # You can choose three modes auto, light, and dark. By default, the auto mode is set, which means the user can choose the light or dark mode themself.
 
 
 #-------------------------------
@@ -45,7 +45,8 @@ author:
 social:
 - {icon: "ion-logo-github", link: "https://github.com/sanketsalunkhe12"}
 - {icon: "ion-logo-linkedin", link: "https://www.linkedin.com/in/sanket-salunkhe17/"}
-# - {icon: "ion-logo-instagram", link: "https://www.instagram.com/ruzickalukas96/"}
+- {icon: "ion-mail", link: "sas9908@nyu.edu"}
+- {icon: "ion-logo-instagram", link: "https://www.instagram.com/ruzickalukas96/"}
 # - {icon: "ion-logo-twitter", link: "https://twitter.com/ruzickalukas96"}
 
 # Example of adding a new link to the footer - {icon: "ion-logo-dribbble", link: "https://dribbble.com"}
