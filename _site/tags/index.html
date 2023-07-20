@@ -41,10 +41,8 @@
 
   <script>
     
-    if (localStorage.getItem("theme") === "dark") {
       document.documentElement.setAttribute("dark", "");
       document.documentElement.classList.add('dark-mode');
-    }
     
   </script>
 
@@ -119,9 +117,8 @@
             <div></div>
           </div>
           
-          <div class="toggle-theme toggle-theme-js">
-            <span class="toggle-moon" title="Enable dark mode" aria-hidden="true"></span>
-            <span class="toggle-sun" title="Enable light mode" aria-hidden="true"></span>
+          <div class="toggle-theme theme-dark">
+            <span class="toggle-moon" title="Dark mode enabled" aria-hidden="true"></span>
           </div>
           
         </div>
