@@ -1,13 +1,13 @@
 ---
 layout: page
 title: About me
-description: I'm (still 😁) a young lad born in north Bohemia (Most) who moved to Prague to study at university and eventually built a career as developer here. Here I'd like to tell you more about my passions and motivations.
+description: I am a young and energatic engineer born in Maharashtra, India. I complete my initial study in India and moved to New York, USA to study Masters in Robotics at New York University. Currently, I am on my path to become a better Robotics Researcher. Here I'd like to tell you more about my passions and motivations.
 permalink: /about/
-image: '/images/portraits/snezka.jpg'
-image_caption: 'Selfie from the top of the highest mountain in the Czech Republic (Sněžka) that I managed to climb shirtless'
+image: '/images/portraits/sanket.jpg'
+# image_caption: ''
 ---
 
-Of course, I have to start with my passion for programming. As a kid I was always curious about how things worked and once I found out that I could actually be the one to bring these things to live, this world completely consumed me. 
+<!-- Of course, I have to start with my passion for programming. As a kid I was always curious about how things worked and once I found out that I could actually be the one to bring these things to live, this world completely consumed me. 
 
 > The IT industry is full of ethusiastic people - tuning into the wave and sharing the passion is something I never get tired of 💜
 
@@ -31,4 +31,4 @@ I love all kinds of motorsport 🏎, but I enjoy Formula 1 (as a fan) and kartin
 
 ![Spartan Race photo](/images/about/spartanrace-1.jpg)
 
-Last but not least, I try to be aware of my body and both physical and mental care. In addition to active workouts and running, I also dedicate myself to hacking my body and mind to be better every day. I also love extreme outdoor races, such as the [Spartan race](https://www.spartan.com), where I can really push my performance to the absolute limit.
+Last but not least, I try to be aware of my body and both physical and mental care. In addition to active workouts and running, I also dedicate myself to hacking my body and mind to be better every day. I also love extreme outdoor races, such as the [Spartan race](https://www.spartan.com), where I can really push my performance to the absolute limit. -->
