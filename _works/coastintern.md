@@ -6,7 +6,7 @@ from: 2022-01-05 00:00:00 +0000
 to: 2022-01-08 00:00:00 +0000
 role: Robotics Engineer Intern
 image: '/images/works/coast_intern/coast.jpg'
-# image_caption: 'endavu logo'
+skills: Deep Learning, C++, ROS, Computer Vision, Ubuntu, Git
 ---
 
 Developed an RNN-LSTM model for trajectory tracking of surrounding traffic agents with 80% accuracy.

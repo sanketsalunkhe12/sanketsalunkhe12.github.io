@@ -6,6 +6,7 @@ from: 2019-01-06 00:00:00 +0000
 to: 2021-01-06 00:00:00 +0000
 role: Associate Robotics Engineer
 image: '/images/works/robolab/robolab1.png'
+skills: AutoCAD, Fusion360, 3D Printing (FDM & SLA), Python, IoT
 ---
 
 Developed an RNN-LSTM model for trajectory tracking of surrounding traffic agents with 80% accuracy.

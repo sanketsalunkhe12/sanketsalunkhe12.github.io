@@ -49,6 +49,9 @@ social:
 - {icon: "ion-logo-instagram", link: "https://www.instagram.com/ruzickalukas96/"}
 # - {icon: "ion-logo-twitter", link: "https://twitter.com/ruzickalukas96"}
 
+# <ion-icon name="mail-open-outline"></ion-icon>
+#           <ion-icon name="logo-linkedin"></ion-icon>
+
 # Example of adding a new link to the footer - {icon: "ion-logo-dribbble", link: "https://dribbble.com"}
 # Other icons can be found at https://ionicons.com/v4/
 
