@@ -7,9 +7,9 @@ image: '/images/portraits/sanket.jpg'
 # image_caption: ''
 ---
 
-<!-- Of course, I have to start with my passion for programming. As a kid I was always curious about how things worked and once I found out that I could actually be the one to bring these things to live, this world completely consumed me. 
+Of course, I have to start with my passion for Robotics. As a kid I was always curious about how things worked and once I found out that I could actually be the one to bring these things to live, this world completely consumed me. 
 
-> The IT industry is full of ethusiastic people - tuning into the wave and sharing the passion is something I never get tired of 💜
+<!-- > The IT industry is full of ethusiastic people - tuning into the wave and sharing the passion is something I never get tired of 💜
 
 I know that being a developer is a never-ending learning process, and that's one of the main reasons I'm glad I chose this path. It's just great to always be able to look back and really see the progress behind me and always have the feeling of growth.
 
