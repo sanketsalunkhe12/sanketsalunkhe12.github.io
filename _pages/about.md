@@ -4,7 +4,7 @@ title: About me
 description: I am a young and energatic engineer born in Maharashtra, India. I complete my initial study in India and moved to New York, USA to study Masters in Robotics at New York University. Currently, I am on my path to become a better Robotics Researcher. Here I'd like to tell you more about my passions and motivations.
 permalink: /about/
 image: '/images/portraits/sanket.jpg'
-image_caption: 'Selfie from the top of the highest mountain in the Czech Republic (Sněžka) that I managed to climb shirtless'
+image_caption: ''
 ---
 
 Of course, I have to start with my passion for Robotics. As a kid I was always curious about how things worked and once I found out that I could actually be the one to bring these things to live, this world completely consumed me. 
