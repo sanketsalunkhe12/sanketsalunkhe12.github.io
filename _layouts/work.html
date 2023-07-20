@@ -7,7 +7,7 @@ layout: default
 
     <div class="row">
       {% if page.image %}
-      <div class="col col-5 col-d-12">
+      <div class="col col-3 col-d-12">
         <div class="work-head__left">
           <div class="work-head__image">
             <img class="lazy" data-src="{{site.baseurl}}{{page.image}}" alt="{{page.title}}">
@@ -19,16 +19,32 @@ layout: default
       </div>
       {% endif %}
 
-      <div class="col col-7 col-d-12">
+      <div class="col col-9 col-d-12">
         <div class="work-head__right">
           {% if page.category %}
           <div class="work-category">{{ page.category }}</div>
           {% endif %}
+
           <h1 class="page-title">{{ page.title }}</h1>
+          
           {% if page.description %}
           <p class="page-description">{{ page.description }}</p>
           {% endif %}
+
+          {% if page.github_link %}
+          <div class="social">
+            <!-- <ul class="social__list__end list-reset"> -->
+              <!-- <li class="social__item"> -->
+                <a class="social__link" href="{{ page.github_link }}" target="_blank" rel="noopener"
+                  aria-label="GitHub link"><i class="ion ion-logo-github"></i></a>
+              <!-- </li> -->
+            <!-- </ul> -->
+          </div>
+          {% endif %}
+
+
           <ul class="work-meta list-reset">
+            
             {% if page.from %}
             <li class="work-meta__item"><strong>Date:</strong> 
               <span>
@@ -38,12 +54,19 @@ layout: default
                 {% endif %}
               </span></li>
             {% endif %}
+
             {% if page.client %}
             <li class="work-meta__item"><strong>Client:</strong> <span>{{ page.client }}</span></li>
             {% endif %}
+
             {% if page.role %}
             <li class="work-meta__item"><strong>Role:</strong> <span>{{ page.role }}</span></li>
             {% endif %}
+
+            {% if page.skills %}
+            <li class="work-meta__item"><strong>Skills:</strong> <span>{{ page.skills }}</span></li>
+            {% endif %}
+
           </ul>
           {% if page.appstore_link %}
           <br>
@@ -51,16 +74,7 @@ layout: default
             <img class="lazy" data-src="/images/appstore-light.svg" alt="App Store link">
           </a>
           {% endif %}
-          {% if page.github_link %}
-          <div class="social">
-            <ul class="social__list__end list-reset">
-              <li class="social__item">
-                <a class="social__link" href="{{ page.github_link }}" target="_blank" rel="noopener"
-                  aria-label="GitHub link"><i class="ion ion-logo-github"></i></a>
-              </li>
-            </ul>
-          </div>
-          {% endif %}
+          
         </div>
       </div>
     </div>
@@ -74,7 +88,7 @@ layout: default
     {{ content }}
   </div>
 
-  <section class="section work-navigation">
+  <!-- <section class="section work-navigation">
     <div class="row">
 
       <div class="col col-12">
@@ -124,5 +138,6 @@ layout: default
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
+  
 </div>
