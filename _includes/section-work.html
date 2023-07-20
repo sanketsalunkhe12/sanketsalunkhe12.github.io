@@ -4,7 +4,7 @@
   <section class="section works animate">
     <div class="row">
 
-      <div class="col col-4 col-d-12">
+      <div class="col col-3 col-d-12">
         <div class="section__info">
           <h2 class="section__title">{{ site.data.settings.work.work__title }}</h2>
           {% if site.data.settings.work.work__description %}
@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="col col-8 col-d-12">
+      <div class="col col-9 col-d-12">
         <div class="row">
           {% assign sorted = site.works | sort: 'to', 'last' | reverse %}
           {% for work in sorted limit:3 %}

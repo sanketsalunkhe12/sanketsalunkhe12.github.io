@@ -45,12 +45,9 @@ author:
 social:
 - {icon: "ion-logo-github", link: "https://github.com/sanketsalunkhe12"}
 - {icon: "ion-logo-linkedin", link: "https://www.linkedin.com/in/sanket-salunkhe17/"}
-- {icon: "ion-mail", link: "sas9908@nyu.edu"}
-- {icon: "ion-logo-instagram", link: "https://www.instagram.com/ruzickalukas96/"}
-# - {icon: "ion-logo-twitter", link: "https://twitter.com/ruzickalukas96"}
-
-# <ion-icon name="mail-open-outline"></ion-icon>
-#           <ion-icon name="logo-linkedin"></ion-icon>
+- {icon: "ion-logo-google", link: "mailto:sas9908@nyu.edu"}
+# - {icon: "ion-logo-instagram", link: "https://www.instagram.com/ruzickalukas96/"}
+- {icon: "ion-logo-twitter", link: "https://twitter.com/SanketASalunkhe"}
 
 # Example of adding a new link to the footer - {icon: "ion-logo-dribbble", link: "https://dribbble.com"}
 # Other icons can be found at https://ionicons.com/v4/
@@ -69,7 +66,7 @@ hero:
 # Own projects Settings
 own:
   enable: true
-  own__title: Own projects
+  own__title: Technical Projects
   own__description: Here are the projects I've done on my own.
   
 
