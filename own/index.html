@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Own projects
-description: Here are the projects I've done on my own.
+title: Technical Projects
+description: Here are the projects I've done.
 ---
 
 <div class="container">
@@ -19,7 +19,7 @@ description: Here are the projects I've done on my own.
   <div class="row">
     {% assign sorted = site.owns | sort: 'from' | reverse %}
     {% for own in sorted %}
-      <article class="work col col-4 col-d-6 col-t-12">
+      <article class="work col col-3 col-d-6 col-t-12">
         <div class="work__content">
           <a href="{{ own.url }}" class="work__image">
             <img class="lazy" data-src="{{ own.image }}" alt="{{ own.title }}">
