@@ -1,0 +1,16 @@
+current directory: /home/sanket/Projects/personal_website/sanketsalunkhe12.github.io/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20250409-8466-vhswpo.rb extconf.rb
+creating Makefile
+
+current directory: /home/sanket/Projects/personal_website/sanketsalunkhe12.github.io/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\= clean
+
+current directory: /home/sanket/Projects/personal_website/sanketsalunkhe12.github.io/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\=
+compiling ruby_http_parser.c
+compiling ryah_http_parser.c
+linking shared-object ruby_http_parser.so
+
+current directory: /home/sanket/Projects/personal_website/sanketsalunkhe12.github.io/vendor/bundle/ruby/3.0.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 ruby_http_parser.so ./.gem.20250409-8466-lw3r3i

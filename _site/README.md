@@ -12,6 +12,20 @@ If this is your first time using Jekyll, please follow the [Jekyll docs](https:/
 
 To run the theme locally, navigate to the theme directory and run `bundle install` to install the dependencies, then run `jekyll serve` or `bundle exec jekyll serve` to start the Jekyll server. You can then see the website at `localhost:4000`.
 
+```
+sudo apt-get update
+gem install bundler
+sudo apt-get install ruby-dev build-essential
+bundle config set --local path 'vendor/bundle'
+bundle install
+```
+
+To run server:
+```
+bundle exec jekyll serve
+```
+
+
 To add any job, add .md file into `_works` folder following similar layout. For new projects, add .md file into `_owns` folder with similar layout.  
 
 Layout files:
